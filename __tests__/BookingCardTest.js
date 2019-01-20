@@ -5,7 +5,7 @@ import { createShallow } from '@material-ui/core/test-utils'
 import BookingCard from '../src/BookingCard'
 import Card from '@material-ui/core/Card'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/BUtton'
+import Button from '@material-ui/core/Button'
 
 configure({ adapter: new Adapter() })
 
@@ -24,8 +24,8 @@ describe('BookingCard', () => {
   })
 
   it('should error if there is no main course', () => {
-    // mountedComponent.find(Button).at(0).simulate('click')
-    // This is not working - I think the Babel coniguration is missing something
+     mountedComponent.find(Button).at(0).simulate('click')
+     expect(mountedComponent.state('errors')).toHaveLength(2)
   })
 
 })

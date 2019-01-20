@@ -151,6 +151,19 @@ class BookingCard extends React.Component {
     return errors
   }
 
+  checkForDiscount = () => {
+    let isDicounted = false
+    let diners = ['diner1', 'diner2']
+    for (let diner of diners) {
+      let dinerSelection = Object.assign({}, this.state[diner])
+      if(dinerSelection.starter === 3 && dinerSelection.main === 5) {
+        isDicounted = true
+        break
+      }
+    }
+    return isDicounted
+  }
+
   calculatePrice = () => {
     let diners = ['diner1', 'diner2']
     let total = 0
@@ -166,6 +179,10 @@ class BookingCard extends React.Component {
           total += price
         }
       }
+    }
+    let isDiscounted = this.checkForDiscount()
+    if(isDiscounted) {
+      total = total - 0.1 * total
     }
     return total
   }
